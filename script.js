@@ -5,13 +5,15 @@
 console.log('Peticiones')
 
 //callback
-const obtener = () => {
-    console.log('obtener')
-}
+// const obtener = () => {
+//     console.log('obtener')
+// }
+//obtener()
 
 const buttonObtener = document.getElementById('button-obtener')
 //Agregar evento al boton
 //buttonObtener.addEventListener("click", obtener)
+
 buttonObtener.addEventListener('click', async () => {
     console.log('obtener')
     const pokemonData = await obtenerPokemon()
@@ -28,19 +30,18 @@ buttonObtener.addEventListener('click', async () => {
     const img = document.createElement('img')
     img.src = pokemonData.sprites.front_default
     pokemonArticle.appendChild(img)
-
-
-
-
  })  
     
 
 
 const obtenerPokemon = async () => {
-    const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+    let nombrePokemon = "pikachu"
+    const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
+    //const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/pokemon")
     const data = await respuesta.json()
     console.log(data)
     return data
-
 }
+
+
 
